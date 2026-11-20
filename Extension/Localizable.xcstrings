@@ -1,6 +1,40 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Repeats the video for at least 15 minutes. While this Aerial is selected, locking starts the screen saver and keeps the display awake for up to 15 minutes, including on battery. Require a password when it stops." : {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repete o vídeo por pelo menos 15 minutos. Com este Aerial selecionado, bloquear inicia o protetor de tela e mantém a tela ligada por até 15 minutos, inclusive na bateria. Exija uma senha ao sair."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "비디오를 최소 15분 동안 반복합니다. 이 Aerial이 선택되어 있으면 잠글 때 화면 보호기를 시작하고 배터리 사용 중에도 디스플레이를 최대 15분 동안 켜 둡니다. 종료 시 암호를 요구하세요."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "動画を少なくとも15分間繰り返します。このAerialの選択中は、ロックするとスクリーンセーバが起動し、バッテリー使用時も最大15分間ディスプレイを点灯させます。終了時にパスワードを要求してください。"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "循环播放视频至少 15 分钟。选用此 Aerial 时，锁屏会启动屏幕保护程序并保持显示器开启最多 15 分钟，包括使用电池时。请设置退出时需要输入密码。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "循環播放影片至少 15 分鐘。選用此 Aerial 時，鎖定會啟動螢幕保護程式並保持顯示器開啟最多 15 分鐘，包括使用電池時。請設定結束時需要輸入密碼。"
+          }
+        }
+      }
+    },
     "Steam authentication information retained on this device could not be updated (%@); you may need to sign in again later." : {
       "localizations" : {"pt-BR" : {"stringUnit" : {"state" : "translated", "value" : "As informações de autenticação da Steam mantidas neste dispositivo não puderam ser atualizadas (%@); talvez seja necessário iniciar sessão novamente mais tarde."}}, "ko" : {"stringUnit" : {"state" : "translated", "value" : "이 기기에 보관된 Steam 인증 정보를 업데이트할 수 없었습니다(%@). 나중에 다시 로그인해야 할 수 있습니다."}}, "en": {"stringUnit": {"state": "translated", "value": "Steam authentication information retained on this device could not be updated (%@); you may need to sign in again later."}}, "ja": {"stringUnit": {"state": "translated", "value": "このデバイスに保持されているSteam認証情報を更新できなかったため（%@）、後で再度ログインが必要になる場合があります。"}}, "zh-Hans": {"stringUnit": {"state": "translated", "value": "无法更新此设备保留的 Steam 身份验证信息（%@）；之后可能需要重新登录。"}}, "zh-Hant": {"stringUnit": {"state": "translated", "value": "無法更新此裝置保留的 Steam 驗證資訊（%@）；之後可能需要重新登入。"}}}
     },

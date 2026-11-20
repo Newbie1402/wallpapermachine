@@ -48,6 +48,10 @@ struct DesktopSettingsSection: View {
   static let lockScreenContext = SettingsItem(
     id: "desktop.lock-screen-context", section: .desktop, group: lockScreen,
     title: "Compatibility & permissions")
+  static let sequoiaAerialBridge = SettingsItem(
+    id: "desktop.sequoia-aerial-bridge", section: .desktop, group: screenSaver,
+    title: "Sequoia Aerial screen saver video",
+    note: "Repeats the video for at least 15 minutes. While this Aerial is selected, locking starts the screen saver and keeps the display awake for up to 15 minutes, including on battery. Require a password when it stops.")
 
   static let screenSaverSwitch = SettingsItem(
     id: "desktop.screen-saver", section: .desktop, group: screenSaver,
@@ -61,7 +65,8 @@ struct DesktopSettingsSection: View {
 
   static let items = [
     desktopWallpapers, writeDesktopPicture, refreshMissionControl, keepWindowsOnClick, livePropertyEdits,
-    lockScreenSwitch, lockScreenStatus, lockScreenContext, screenSaverSwitch, screenSaverStatus,
+    lockScreenSwitch, lockScreenStatus, lockScreenContext, sequoiaAerialBridge,
+    screenSaverSwitch, screenSaverStatus,
     screenSaverContext,
   ]
 
@@ -117,12 +122,38 @@ struct DesktopSettingsSection: View {
             )
           }
         }
+        if ProcessInfo.processInfo.operatingSystemVersion.majorVersion == 15 {
+          sequoiaAerialBridgeRow
+        }
       }
     }
     .onAppear { controller.refreshSystemReadings() }
   }
 
   private var search: SettingsSearch { controller.settings.search }
+
+  private var sequoiaAerialBridgeRow: some View {
+    SettingsRow(Self.sequoiaAerialBridge, stacked: true) {
+      HStack(spacing: 8) {
+        SettingsActionButton(
+          "Apply active video",
+          isDisabled: controller.isStoreBusy || controller.isBusy("sequoiaAerial.apply")
+        ) {
+          controller.launch("sequoiaAerial.apply") {
+            try await controller.applyActiveVideoToSequoiaAerial()
+          }
+        }
+        SettingsActionButton(
+          "Restore Apple video",
+          isDisabled: controller.isBusy("sequoiaAerial.restore")
+        ) {
+          controller.launch("sequoiaAerial.restore") {
+            try await controller.restoreSequoiaAerial()
+          }
+        }
+      }
+    }
+  }
 
   /// Different wallpaper for each desktop, for the display the Library applies wallpapers to, named
   /// when there are several. Choose… opens that display's card in Displays, where each desktop's

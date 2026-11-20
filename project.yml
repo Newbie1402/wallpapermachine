@@ -63,6 +63,12 @@ targets:
         buildPhase: resources
       - path: ThirdParty/mediaremote-adapter/LICENSE
         buildPhase: resources
+      - path: scripts/sequoia_aerial_bridge.py
+        buildPhase: resources
+      - path: scripts/repeat_aerial_video.swift.txt
+        buildPhase: resources
+      - path: scripts/repeat_aerial_video.swift.txt
+        buildPhase: resources
     dependencies:
       - target: MediaRemoteAdapter
         embed: true

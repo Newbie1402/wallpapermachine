@@ -124,6 +124,30 @@ def install_app_icon(app, compiled):
     run(["codesign", "--force", "--sign", "-", "--preserve-metadata=entitlements,requirements,flags,runtime", app], stage="codesign")
 
 
+def install_aerial_repeat_helper(app, env):
+    """Compile and bundle the Sequoia Aerial loop helper without a runtime toolchain dependency."""
+    source = ROOT / "scripts/repeat_aerial_video.swift.txt"
+    build_source = BUILD / "repeat_aerial_video.swift"
+    build_binary = BUILD / "repeat-aerial-video"
+    resources = app / "Contents/Resources"
+    bundled_binary = resources / "repeat-aerial-video"
+    BUILD.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(source, build_source)
+    swiftc = subprocess.check_output(["xcrun", "--find", "swiftc"], env=env, text=True).strip()
+    run([
+        swiftc, "-O", "-parse-as-library", "-target", "arm64-apple-macos15.0",
+        "-sdk", env["SDKROOT"], str(build_source), "-o", str(build_binary),
+    ], env=env, stage="aerial-repeat-helper")
+    resources.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(build_binary, bundled_binary)
+    bundled_binary.chmod(0o755)
+    run(["codesign", "--force", "--sign", "-", bundled_binary], env=env, stage="aerial-repeat-sign")
+    run([
+        "codesign", "--force", "--sign", "-",
+        "--preserve-metadata=entitlements,requirements,flags,runtime", app,
+    ], env=env, stage="codesign")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--swift-only", action="store_true")
@@ -167,6 +191,7 @@ def main():
     run(["xcodebuild", "-project", XCODEPROJ.name, "-scheme", "WallpaperMachine", "-configuration", args.configuration, "-derivedDataPath", BUILD, "build", *settings], env=env, stage=f"xcodebuild-{args.configuration}")
     if compiled_icon:
         install_app_icon(app_bundle(args.configuration), compiled_icon)
+    install_aerial_repeat_helper(app_bundle(args.configuration), env)
     print(f"{MARK.ok} Built {PRODUCTS / args.configuration / 'WallpaperMachine.app'}")
 
 

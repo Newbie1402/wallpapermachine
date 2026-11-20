@@ -36,6 +36,10 @@ macOS language list) and every shipped language under its own name.
   [Properties](wallpaper-properties.md#properties)). Steam filter
   values and identifiers do not change when labels are translated.
 
+The Displays page writes numbers without thousands separators and accepts a period
+or the region’s decimal separator. Whole-number fields, such as minutes and solar
+rule offsets, refuse fractions.
+
 How the language is resolved, how the layers fit together and how to add a
 language: [Localization](../localization.md).
 

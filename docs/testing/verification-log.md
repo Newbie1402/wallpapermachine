@@ -25,6 +25,17 @@ and moves whatever falls past ten verbatim into a monthly file under
 [archive/](archive/); promote anything durable before it goes. Editing an
 entry's recorded result is not allowed.
 
+## 2026-11-20 — Sequoia manual-lock Aerial playback
+
+- macOS 15.6.1: reproduced manual-lock display sleep; loginwindow logged a 5-second initial timeout and 30-second wake timeout.
+- Saved app automatic-install preference as false; retained the existing 600-second screen-saver idle delay.
+- Targeted SequoiaAerialLockPlaybackTests: 9 passed, including unlock during asynchronous validation and queued refresh after stop.
+- DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer python3 scripts/test.py: 3919 passed, 5 failed, 44 skipped; gate failed.
+- Targeted recheck: storage timeout did not recur; PixivBrowserRenderTests, TelemetryServiceTests, PanelImageViewTests and InspectorWordingTests failures persisted (10 passed, 4 failed).
+- Installed-asset validation probe passed; component desktop probe launched ScreenSaverEngine and its display assertion, then released the assertion on unlock.
+- Sustained playback test was interrupted by unlock before 13 seconds. Playback past the finite MOV duration, 15-minute assertion expiry and battery-specific runtime remain unverified.
+- Release build and installation not performed because the full gate failed. Temporary probes, screenshots and task logs removed after inspection.
+
 ## 2026-10-25 — Updates, web, downloads, Workshop, scene and panel improvements
 
 Update signature check, http in web content, page errors in the log, frame-confirmed switch hold, saved pause, download queue order and batch retry, Steam favorites, timeline mirror mode, CursorEvent.localPosition, tile zoom and Help menu, doc link check.
@@ -36,7 +47,6 @@ Update signature check, http in web content, page errors in the log, frame-confi
 - Steam favorites page layout and `sortmethod` values read off a public profile's favorites page; a signed-in subscriptions page was not checked
 - Not compared with Wallpaper Engine frames (no VM run): mirror end-frame behaviour, `localPosition` y direction
 - Not run on a desktop: the frame-confirmed release of the switch hold, http loads, the View and Help menus, the fourth Discover tab's fit
-
 
 ## 2026-10-25 — Scene capability probe, remembered Native Metal verdicts, mirror audio and issue-report details
 
@@ -113,12 +123,3 @@ Space mode reworked: wallpaper windows of a display in the mode stay on its curr
 - Panel: card switch, desktop strip, chooser popover and the toolbar's toggle and "· Desktop 1" label rendered as intended
 - Gap: ad-hoc test builds ask again for System Audio Recording; an audio-responsive scene's first frame waits for the answer (6.4 s and 180 s stalls seen); a pixiv keychain prompt was denied
 - Not checked live: Apply assigning the current desktop (unit-tested), chooser search typing, multiple displays with separate Spaces, web/video on a pinned display, VoiceOver
-
-## 2026-10-24 — Daily active count (DAU/MAU) without an install id
-
-- App: TelemetryActiveCount sends one ping per UTC day to /api/telemetry/active (random per-day ping id, day, version, source, monthFirst); hourly retry with the same ping, next send 0-15 min after UTC midnight; no count with WALLPAPER_MACHINE_HOME or a defaults suite.
-- python3 scripts/test.py --only TelemetryActiveCountTests --only TelemetryClientTests --only TelemetryServiceTests: 18 passed, 0 failed.
-- python3 scripts/test.py (full gate, worktree): Python script tests OK; native 4062 passed, 0 failed, 47 skipped; 1 runtime warning (main-thread call), not traced to this change and not baselined.
-- Website (separate repo, branch feat/telemetry-active-count): npm run typecheck OK; local wrangler dev on a scratch D1 with migration 0002: retries (same and lowercase ping) counted once, a day-behind clock kept its day, a far-off clock took the arrival day, bad schema/ping/day/agent 400, cron prune kept 400-day totals and 2-day pings.
-- Dashboard DAU/MAU SQL run on the scratch D1 gave the expected sums; the page's new section was not viewed in a browser (owner sign-in needed).
-- Not done: no D1 remote migration, no Worker deploy, no app Release build, no desktop run.

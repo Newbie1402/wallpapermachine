@@ -9,7 +9,7 @@ import Foundation
 
 enum DisplaysNumberInput {
   /// The number a field holds, read the way `locale` writes numbers: digits, an optional sign and at
-  /// most one decimal separator, in either character width. Empty text, anything else in the text
+  /// most one decimal separator (the locale's or a dot), in either character width. Empty text, anything else in the text
   /// (so "1.2.3" and "12px" are nothing, not 1.2 and 12), a figure that is not finite, and for
   /// `integer` a number with a fraction are nil.
   static func parse(_ text: String, integer: Bool = false, locale: Locale = .current) -> Double? {
@@ -17,8 +17,6 @@ enum DisplaysNumberInput {
     var normalized = trimmed.applyingTransform(.fullwidthToHalfwidth, reverse: false) ?? trimmed
     guard !normalized.isEmpty else { return nil }
     let decimal = locale.decimalSeparator ?? "."
-    let grouping = locale.groupingSeparator ?? ","
-    if grouping != decimal { normalized = normalized.replacingOccurrences(of: grouping, with: "") }
     normalized = normalized.replacingOccurrences(of: decimal, with: ".")
     guard normalized.range(of: #"^[+-]?(\d+\.?\d*|\.\d+)$"#, options: .regularExpression) != nil,
       let value = Double(normalized), value.isFinite

@@ -20,6 +20,16 @@ final class DisplaysSettingsDraftsTests: SettingsBTestCase {
     XCTAssertNil(DisplaysNumberInput.parse("nan", locale: english))
   }
 
+  func testNumberFieldsNeverTurnPunctuationIntoExtraDigits() {
+    let comma = Locale(identifier: "de_DE")
+    XCTAssertEqual(DisplaysNumberInput.parse("51.5", locale: comma), 51.5)
+    XCTAssertEqual(DisplaysNumberInput.parse("-33.87", locale: comma), -33.87)
+    XCTAssertNil(DisplaysNumberInput.parse("7.5", integer: true, locale: comma))
+    XCTAssertNil(DisplaysNumberInput.parse("7,5", integer: true, locale: comma))
+    XCTAssertNil(DisplaysNumberInput.parse("1.2.3", locale: comma))
+    XCTAssertNil(DisplaysNumberInput.parse("1,2,3", locale: english))
+  }
+
   func testAStoredNumberIsWrittenWithoutGroupingAndWithAFewFractionDigits() {
     XCTAssertEqual(DisplaysNumberInput.text(1.5, digits: 2, locale: english), "1.5")
     XCTAssertEqual(DisplaysNumberInput.text(1, digits: 2, locale: english), "1")

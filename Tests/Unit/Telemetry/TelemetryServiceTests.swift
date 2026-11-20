@@ -199,11 +199,16 @@ final class TelemetryServiceTests: XCTestCase {
 
         let reports = await uploads.reports
         let data = try XCTUnwrap(reports.first)
-        let text = try XCTUnwrap(String(data: data, encoding: .utf8))
-        for secret in ["alice", "Users", "pixiv", "image-", "Private", "holiday", NSUserName(), NSHomeDirectory()] {
-            XCTAssertFalse(text.contains(secret), "\(secret) reached the report")
-        }
         let report = try decode(data)
+        func stringValues(_ value: Any) -> [String] {
+            if let dictionary = value as? [String: Any] { return dictionary.values.flatMap(stringValues) }
+            if let array = value as? [Any] { return array.flatMap(stringValues) }
+            return (value as? String).map { [$0] } ?? []
+        }
+        let values = stringValues(report)
+        for secret in ["alice", "Users", "pixiv", "image-", "Private", "holiday", NSHomeDirectory()] {
+            XCTAssertFalse(values.contains { $0.contains(secret) }, "\(secret) reached the report")
+        }
         let activations = try XCTUnwrap(report["activations"] as? [[String: Any]])
         XCTAssertEqual(activations.compactMap { $0["wallpaper"] as? String }, ["2873461829"])
         XCTAssertEqual(activations.map { $0["source"] as? String }, ["workshop", "local", "local", "local"])

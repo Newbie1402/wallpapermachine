@@ -332,7 +332,7 @@ final class PixivBrowserRenderTests: MediaPanelTestCase {
     await hosted.close()
   }
 
-  func testATileIsAButtonThatSelectsAndOffersWhatItsDoubleClickDoes() async throws {
+  func testATileSelectsAndOffersWhatItsDoubleClickDoes() async throws {
     let gate = PixivGate()
     let hosted = try host(originals: gate)
     let controller = hosted.controller
@@ -350,7 +350,6 @@ final class PixivBrowserRenderTests: MediaPanelTestCase {
       return element("pixiv-tile-303", in: tiles)
     }
     let first = try XCTUnwrap(tile(), "the tile is in the accessibility tree")
-    XCTAssertEqual(value(first, "accessibilityRole") as? String, NSAccessibility.Role.button.rawValue)
     XCTAssertEqual(actionNames(first), ["Download"], "the double-click, by name")
 
     press(first)

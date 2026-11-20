@@ -1,10 +1,82 @@
 # Lock screen and screen saver (experimental)
 
-The app can animate the macOS lock screen and use applied wallpapers as the
-screen saver. Both choices are off by default and require macOS 26 or later. The
-file exchange between the app and the sandboxed extension is specified in
+The app's native lock-screen and screen-saver integration is off by default and
+requires macOS 26 or later. On macOS Sequoia 15, an experimental video-only
+workaround can play one WallpaperMachine video through the Apple Aerial selected
+in System Settings. It replaces that Aerial's local video file after making a
+verified backup; it does not animate scenes or web wallpapers and does not use
+the app's native lock-screen controls. See [Sequoia Aerial workaround](#sequoia-aerial-workaround).
+The file exchange between the app and the sandboxed extension is specified in
 [architecture](../architecture.md#lock-screen-extension); this document describes
 what the user gets and the rules that keep the two native modes consistent.
+
+## Sequoia Aerial workaround
+
+This workaround was tested on macOS Sequoia 15.6.1. The selected Aerial file can
+be replaced and restored. The reliable animated away mode is Apple's Aerial
+screen saver: when active, WallpaperVideoExtension decodes and presents the video
+continuously. The direct wallpaper presentation uses a cached frame; the screen
+saver supplies the moving image while the Mac is away. This changes an undocumented
+Apple asset location, so macOS updates may invalidate it. The helper refuses to
+run outside Sequoia 15.x and asks for administrator access when it replaces or
+restores the video.
+
+First, in **System Settings → Wallpaper**, choose the same Apple Aerial on every
+display, turn on **Show as Screen Saver**, and confirm the screen saver itself works.
+Connect a display if the Mac is configured to sleep its display quickly. In
+WallpaperMachine, apply the same video wallpaper to every desktop display, then open
+**Settings → Desktop & Lock Screen → Screen Saver → Sequoia Aerial screen saver video**
+and choose **Apply active video**. WallpaperMachine opens
+Terminal with the helper and active video's path; enter the Mac password when `sudo`
+asks. The original Aerial is backed up before replacement, then the app starts the
+screen saver so you can see the video. The helper converts the clip to 4K HEVC, then
+repeats its encoded frames into a MOV lasting at least 15 minutes. This keeps a short workshop clip from
+ending and leaving a black screen during the normal away interval. In **System Settings
+→ Lock Screen**, set the screen saver delay shorter than the display-sleep delay and
+require a password when it stops to keep the animated away screen protected. If the
+display sleeps first, macOS turns it off before the screen saver can animate.
+Choose **Restore Apple video** in the same Settings row when finished.
+
+On Sequoia, while the installed bridge's Aerial is selected, WallpaperMachine starts
+the screen saver when the session locks, including with `Control-Command-Q`. It holds
+the display awake on both AC and battery for up to 15 minutes, releasing it earlier
+on unlock, app quit, or an explicit display or system sleep. This consumes additional energy while locked. The ordinary screen-saver
+inactivity delay is unchanged. Restoring the Apple video or selecting a different Aerial
+stops this behavior on the next lock. If recorded screen-saver selections disagree
+between displays or Spaces, the app leaves their playback and display sleep alone. No password requirement is changed.
+
+Sequoia's manual lock has a separate short display-sleep timeout: on the tested 15.6.1
+machine it was 5 seconds immediately after locking, and 30 seconds after waking the
+locked display. Starting the screen saver alone does not prevent this timeout. The
+lock-only display-sleep assertion prevents that early stop; it does not make a video
+visible on a display that has been explicitly put to sleep. The installed MOV contains
+at least 15 minutes of repeated frames; indefinite playback beyond that duration is
+not guaranteed by this workaround.
+
+The helper can also be run manually from the repository root:
+
+```sh
+python3 scripts/sequoia_aerial_bridge.py status
+python3 scripts/sequoia_aerial_bridge.py apply "/path/to/video-from-WallpaperMachine.mp4"
+```
+
+The app starts the screen saver after installation. To restore Apple's video, run:
+
+```sh
+python3 scripts/sequoia_aerial_bridge.py restore
+```
+
+The original is kept under `~/Library/Application Support/WallpaperMachine/SequoiaAerialBridge`
+until a successful restore. If macOS or another tool changes the Aerial after
+installation, restore stops rather than overwriting that change; inspect the
+current asset before deciding what to do. Only one Aerial ID shared by all
+displays is supported. Choose another Aerial and enable its screen-saver option
+to undo the visual setup; run `restore` first to put Apple's original file back.
+
+The Settings actions open Terminal because the replacement requires administrator
+permission. The helper does not keep the Aerial synchronized automatically when you
+change the desktop selection. It cannot keep arbitrary live scenes or web wallpapers
+rendering on Sequoia's manual lock screen.
 
 ## Enabling it
 
