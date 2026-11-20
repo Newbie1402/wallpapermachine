@@ -146,6 +146,30 @@ extension PanelController {
     }
   }
 
+  /// Opens the Sequoia Aerial workaround for the one video currently applied in WallpaperMachine.
+  /// The helper runs in Terminal so its sudo request is visible and the user can restore Apple's
+  /// original video explicitly.
+  func applyActiveVideoToSequoiaAerial() async throws {
+    try await run(.queued) {
+      let videos = try await store.bridge.nativeVideoWallpapers()
+      let wallpaperIDs = Set(videos.map(\.wallpaperId))
+      guard let video = videos.first, wallpaperIDs.count == 1 else {
+        throw WallpaperActionError(
+          message: L(
+            videos.isEmpty
+              ? "Apply a video wallpaper to your desktop first."
+              : "Apply the same video to every display before using the Sequoia Aerial bridge."
+          ))
+      }
+      try SequoiaAerialBridgeLauncher.apply(videoAt: URL(fileURLWithPath: video.mediaPath))
+    }
+  }
+
+  /// Opens the helper's guarded restore command in Terminal.
+  func restoreSequoiaAerial() async throws {
+    try await run(.queued) { try SequoiaAerialBridgeLauncher.restore() }
+  }
+
   /// `lockScreenRetry`: activation again. Does nothing without the service.
   func retryLockScreen() async throws {
     try await run(.queued) { store.lockScreenWallpaper?.retry(lockScreen: true) }

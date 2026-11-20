@@ -44,6 +44,7 @@ class XcodeSettingTests(unittest.TestCase):
         calls = []
         with mock.patch.object(sys, "argv", ["build.py", "--swift-only", *arguments]), \
                 mock.patch.object(build, "build_environment", return_value={}), \
+                mock.patch.object(build, "install_aerial_repeat_helper"), \
                 mock.patch.object(build, "run", side_effect=lambda command, *_, **__: calls.append(command)), \
                 mock.patch("builtins.print"):
             build.main()
@@ -57,6 +58,34 @@ class XcodeSettingTests(unittest.TestCase):
     def test_rejects_a_setting_without_a_value(self):
         with mock.patch("sys.stderr"), self.assertRaises(SystemExit):
             self.xcodebuild_arguments("--xcode-setting", "SWIFT_USE_INTEGRATED_DRIVER")
+
+
+class AerialRepeatHelperTests(unittest.TestCase):
+    def test_build_bundles_a_signed_repeat_helper(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            app = root / "WallpaperMachine.app"
+            build_root = root / "Build"
+            app.mkdir()
+            build_root.mkdir()
+            calls = []
+
+            def record(command, *, env=None, stage="build", **_kwargs):
+                calls.append((command, stage))
+                if stage == "aerial-repeat-helper":
+                    Path(command[-1]).write_bytes(b"repeat helper")
+
+            with mock.patch.object(build, "BUILD", build_root), \
+                    mock.patch.object(build, "run", side_effect=record), \
+                    mock.patch.object(build.subprocess, "check_output", return_value="/usr/bin/swiftc"):
+                build.install_aerial_repeat_helper(app, {"SDKROOT": "/MacOSX.sdk"})
+
+            bundled = app / "Contents/Resources/repeat-aerial-video"
+            self.assertEqual(bundled.read_bytes(), b"repeat helper")
+            self.assertTrue(bundled.stat().st_mode & 0o111)
+            self.assertEqual([stage for _, stage in calls], [
+                "aerial-repeat-helper", "aerial-repeat-sign", "codesign",
+            ])
 
 
 if __name__ == "__main__":

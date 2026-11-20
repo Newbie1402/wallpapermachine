@@ -115,6 +115,7 @@
 		1B26F045E2ECD95C3648036F /* TerminationSignalRelayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F6B5388CB6A16A506C3BB5 /* TerminationSignalRelayTests.swift */; };
 		1B320081E667A75016C8140E /* LockScreenExtensionRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349B8E6EF90BCE39363DB67E /* LockScreenExtensionRegistration.swift */; };
 		1BA320F483791FC8821783B5 /* SystemMediaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C117B2683322257A81DB4D40 /* SystemMediaProvider.swift */; };
+		1BAD7EE4FADEF8B21F8B591F /* SequoiaAerialLockPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D05E7B6C6019063F66E94 /* SequoiaAerialLockPlayback.swift */; };
 		1BD8C528CA5268706F71B257 /* ControlPanelViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A752F8B6946CB646DA5F532D /* ControlPanelViewTests.swift */; };
 		1C563EAA498B5EE7644A516B /* DownloadQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C649CA7C7B9CC8CBB059D3 /* DownloadQueueTests.swift */; };
 		1C828B4964FB31FA104E8805 /* WallpaperHistoryStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC1D45520D686EC13F368A /* WallpaperHistoryStoreTests.swift */; };
@@ -174,6 +175,7 @@
 		2D49F8B1B05E882C24B5C1D1 /* LibraryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18F7A3B83912871DE8EB9C /* LibraryRow.swift */; };
 		2D800AD29574D0385868DA50 /* NowPlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF187507BEF5A414BBFD1CE /* NowPlayingState.swift */; };
 		2D98A9799E254D546F5412BE /* UpdatePromptGateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2672CE0053417814A1C73261 /* UpdatePromptGateTests.swift */; };
+		2DB32AA7E2B2770A0B561534 /* SequoiaAerialLockPlaybackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD3B0464D307D58A7EE4632 /* SequoiaAerialLockPlaybackTests.swift */; };
 		2DBB65A8D972D380C1F7C305 /* WallpaperSwitchHold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41470AD55C1716242308586F /* WallpaperSwitchHold.swift */; };
 		2E0988260C41000B0E60E7EA /* WebWallpaperAudioMediaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA5F8C179419D9DDD24183C /* WebWallpaperAudioMediaTests.swift */; };
 		2E5E5978C7D1993F6BBBC342 /* UpdateWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E088CDFD05D8E9D80B204429 /* UpdateWindow.swift */; };
@@ -287,6 +289,7 @@
 		4A75CAA365300F6FBBF078B0 /* WorkshopFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F965E8454CAC6C590E8B5 /* WorkshopFooter.swift */; };
 		4AE87C8A11BAEC047EFC8843 /* LockScreenVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272A390B656B5D22D26A7B6D /* LockScreenVideoPlayer.swift */; };
 		4B6CB9EFE64DCF6C5FD9FC3C /* WallpaperDeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA469BB9367836FDB769066 /* WallpaperDeletionService.swift */; };
+		4B6EF5B0DFCCA055E87F7DAE /* SequoiaAerialBridgeLauncherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFA2D32883EB488A62DAEB0 /* SequoiaAerialBridgeLauncherTests.swift */; };
 		4BB240CE8EE918E65D44EF13 /* ResultPagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44025E752645AF4AAC2213BF /* ResultPagerTests.swift */; };
 		4BCB401F0A4F60BDE9D085E0 /* NativeVideoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA37CDE575DCF50CB6082C3 /* NativeVideoLayout.swift */; };
 		4C6866DB119A76AC01E2A208 /* WebWallpaperPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB971B62174C5F9F826731BB /* WebWallpaperPageTests.swift */; };
@@ -326,6 +329,7 @@
 		53DA4EDBEB38CE8EB98364DD /* DeletionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FD3C95C18D430D508ADA33 /* DeletionTests.swift */; };
 		541714D9299F572E608BBECE /* SteamWebSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD540B7D5332C07F7C0839C /* SteamWebSessionStore.swift */; };
 		544E378483D36B5AED043412 /* WebWallpaperWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688F4E980B136CA89A7A3372 /* WebWallpaperWindow.swift */; };
+		54542540DB241ACC04C5BC78 /* SequoiaAerialLockShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED014F90B0943C052EAE95B3 /* SequoiaAerialLockShortcut.swift */; };
 		547243ED725391BE91EB1DB7 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E142F074CCD18756A4B4DA /* SettingsModel.swift */; };
 		5483298CD87E6FCEAA6B23CB /* StorageBackupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90F3173F0E33ED9915CAC0D /* StorageBackupModel.swift */; };
 		54D3546D811756AD1DAA4FA9 /* DisplaysSettingsSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D921EE757E3966ADDFC9F67E /* DisplaysSettingsSearchTests.swift */; };
@@ -565,8 +569,10 @@
 		91F8F85D158EC40C15E8F81E /* shuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D7CE75AE94C453481C2E26 /* shuffle.m */; };
 		92131B2EE9BE54F842E17D6B /* WorkshopBrowserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507738E52F80D7CEC99159C4 /* WorkshopBrowserModel.swift */; };
 		923BD9F86114419CB9289FF8 /* WelcomeLanguagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3181F2333EDC825A1F1A1221 /* WelcomeLanguagePage.swift */; };
+		925647F67FD8136CF27020F0 /* repeat_aerial_video.swift.txt in Resources */ = {isa = PBXBuildFile; fileRef = D7405F5A8297377EBF3ECEBC /* repeat_aerial_video.swift.txt */; };
 		9281B56CF06B961FC4132A0C /* WorkshopBrowserModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30F282DBF5E38F7546AF360 /* WorkshopBrowserModelTests.swift */; };
 		92E9DF28E16CDFB196D5C52F /* PanelPropertyPreviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76EA99CF6394A663A78E092 /* PanelPropertyPreviewTests.swift */; };
+		92FDCE0965D241A68E3747F1 /* SequoiaAerialBridgeLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D07691909E5D8A102190923 /* SequoiaAerialBridgeLauncher.swift */; };
 		9328F15FF35F900D00D2B721 /* VideoWallpaperPreviewSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA9BD77D3E0F4FE1A3A861D /* VideoWallpaperPreviewSurface.swift */; };
 		934078B9B0174A087FD94FF2 /* WelcomeGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = C171CF0C43C780F728734072 /* WelcomeGuide.swift */; };
 		93504C73E66672C58F266860 /* NativeVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8526BD3CA32500C06E5B584C /* NativeVideoPlayer.swift */; };
@@ -593,6 +599,7 @@
 		99DD257EF829C576563E9B7C /* WebMOpeningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FC0EFC35C7C715490CB630 /* WebMOpeningTests.swift */; };
 		9ACB2E046DB75B5BF0508422 /* VideoLetterboxStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A656C465663350212B687389 /* VideoLetterboxStoreTests.swift */; };
 		9AE00A87CC730F2CFC79C564 /* WorkshopTileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A78969ADCDE8C2577D5E2C3 /* WorkshopTileCell.swift */; };
+		9B06C5571842E99E33C77FCC /* sequoia_aerial_bridge.py in Resources */ = {isa = PBXBuildFile; fileRef = C569022F76333EDDA11E1B29 /* sequoia_aerial_bridge.py */; };
 		9B0A74EA63112083574710CA /* RuntimeDiagnosticsReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294BC0CF74507522CAA9A8C0 /* RuntimeDiagnosticsReportTests.swift */; };
 		9B6BA51F2E38FEB0E92CE5E5 /* MediaRemoteAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = F4AD9E79BA6BF063B8C95DB8 /* MediaRemoteAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B89CEED8A7C3CB541BEC3F8 /* PanelController+SteamSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C052F88AF9C988C0D9BBC8D /* PanelController+SteamSetup.swift */; };
@@ -1398,6 +1405,7 @@
 		59458F12EF55385E9B06ABDF /* WebWallpaperFontAliasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebWallpaperFontAliasTests.swift; sourceTree = "<group>"; };
 		59EC585D50528EF169EF3ABE /* LibraryEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryEmptyState.swift; sourceTree = "<group>"; };
 		59ED91AD7FC5D3EE80F9C933 /* PropertyTopLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyTopLine.swift; sourceTree = "<group>"; };
+		5A1D05E7B6C6019063F66E94 /* SequoiaAerialLockPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequoiaAerialLockPlayback.swift; sourceTree = "<group>"; };
 		5AA9BD77D3E0F4FE1A3A861D /* VideoWallpaperPreviewSurface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWallpaperPreviewSurface.swift; sourceTree = "<group>"; };
 		5B12FF2DD08710881462D90C /* PanelDisplayLayoutActionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelDisplayLayoutActionsTests.swift; sourceTree = "<group>"; };
 		5B226BF18E1CE29789CAC91E /* AppRuleMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRuleMonitor.swift; sourceTree = "<group>"; };
@@ -1477,6 +1485,7 @@
 		6C800140A55B4369EBA4C495 /* NativeVideoStoragePolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeVideoStoragePolicyTests.swift; sourceTree = "<group>"; };
 		6CA6557127953F06A8D6DA53 /* Equalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equalizer.swift; sourceTree = "<group>"; };
 		6CF58CC5839E6ACD2E85011D /* QuickSettingsTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSettingsTile.swift; sourceTree = "<group>"; };
+		6D07691909E5D8A102190923 /* SequoiaAerialBridgeLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequoiaAerialBridgeLauncher.swift; sourceTree = "<group>"; };
 		6D1E1228B99F5F6C4DF22B35 /* SettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
 		6D1EFB53FD7417F74D723DD2 /* LibraryTileRulesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTileRulesTests.swift; sourceTree = "<group>"; };
 		6D592A0FB0BF1F483871A3EE /* WebWallpaperFontAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebWallpaperFontAliases.swift; sourceTree = "<group>"; };
@@ -1794,6 +1803,7 @@
 		C3E7111F62435C9949A6A37B /* PanelImageViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelImageViewTests.swift; sourceTree = "<group>"; };
 		C4A1840149382539B67F311D /* WallpaperAutomationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperAutomationStore.swift; sourceTree = "<group>"; };
 		C4CF1CA055FFC736CE115398 /* NowPlayingBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBar.swift; sourceTree = "<group>"; };
+		C569022F76333EDDA11E1B29 /* sequoia_aerial_bridge.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = sequoia_aerial_bridge.py; sourceTree = "<group>"; };
 		C58622B2F13FAACF24E98D19 /* WallpaperImportStagingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperImportStagingTests.swift; sourceTree = "<group>"; };
 		C58AECA841E79F5D889DA715 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		C5C6658A86CB853C5DE8C630 /* AppThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppThemeTests.swift; sourceTree = "<group>"; };
@@ -1864,6 +1874,7 @@
 		D5F6B5388CB6A16A506C3BB5 /* TerminationSignalRelayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminationSignalRelayTests.swift; sourceTree = "<group>"; };
 		D6834FEB2BCA305DA966012E /* UserAssetPreparationPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAssetPreparationPerformanceTests.swift; sourceTree = "<group>"; };
 		D71D1AA0F5EF4DE50F504EE8 /* PixivListSummaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixivListSummaryTests.swift; sourceTree = "<group>"; };
+		D7405F5A8297377EBF3ECEBC /* repeat_aerial_video.swift.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = repeat_aerial_video.swift.txt; sourceTree = "<group>"; };
 		D854DE3C7A668038646A5AA9 /* DisplayTitleResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayTitleResolver.swift; sourceTree = "<group>"; };
 		D88DBB36B5B876C8AD50F097 /* MediaRemote.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediaRemote.h; sourceTree = "<group>"; };
 		D910CA2D9662F6DE0E413529 /* WallpaperBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperBridge.swift; sourceTree = "<group>"; };
@@ -1878,6 +1889,7 @@
 		DB2E1095FE0E140C0026149A /* SettingsValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsValues.swift; sourceTree = "<group>"; };
 		DB4A47DDBB08C42EC351C028 /* LockScreenConnectionTrace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenConnectionTrace.swift; sourceTree = "<group>"; };
 		DB96EFEF4D940C435EA52B52 /* DisplayGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayGeometry.swift; sourceTree = "<group>"; };
+		DBFA2D32883EB488A62DAEB0 /* SequoiaAerialBridgeLauncherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequoiaAerialBridgeLauncherTests.swift; sourceTree = "<group>"; };
 		DC18E54E344A75997A0A1D88 /* SettingsSectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionList.swift; sourceTree = "<group>"; };
 		DC4AD3DF595CFA0613D6170F /* FilterTagChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTagChip.swift; sourceTree = "<group>"; };
 		DCCD62DA86DAE9395CF36A49 /* AppUpdateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdateTests.swift; sourceTree = "<group>"; };
@@ -1939,6 +1951,7 @@
 		EA5259C5FA9B94970048015E /* LibrarySettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySettingsSection.swift; sourceTree = "<group>"; };
 		EA564132324391B5F9A1B24B /* SettingsControlsRenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsControlsRenderTests.swift; sourceTree = "<group>"; };
 		EAD33231E51D3F3A7DD62A15 /* ActivationPolicyRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationPolicyRule.swift; sourceTree = "<group>"; };
+		EAD3B0464D307D58A7EE4632 /* SequoiaAerialLockPlaybackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequoiaAerialLockPlaybackTests.swift; sourceTree = "<group>"; };
 		EB289EFB0CD039250EEE65FD /* PanelImagePlacementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelImagePlacementTests.swift; sourceTree = "<group>"; };
 		EBBAAE671C3152A0D30DFF2B /* WallpaperEngineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperEngineApp.swift; sourceTree = "<group>"; };
 		EBD323D904B059EE72F5082D /* WebWallpaperFramePacingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebWallpaperFramePacingTests.swift; sourceTree = "<group>"; };
@@ -1948,6 +1961,7 @@
 		EC35589256B1992A63E436CF /* InspectorNotices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorNotices.swift; sourceTree = "<group>"; };
 		EC75867843E7AD620D17B481 /* SyntheticVideoFixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntheticVideoFixture.swift; sourceTree = "<group>"; };
 		EC75CE8D6365F952FDA8B028 /* AppLanguageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageTests.swift; sourceTree = "<group>"; };
+		ED014F90B0943C052EAE95B3 /* SequoiaAerialLockShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequoiaAerialLockShortcut.swift; sourceTree = "<group>"; };
 		ED0E5A801F89BF191C52D151 /* StillImagePageRenderingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillImagePageRenderingTests.swift; sourceTree = "<group>"; };
 		ED5671F509B3F2B06A1A9929 /* Phosphene-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Phosphene-LICENSE.txt"; sourceTree = "<group>"; };
 		EDA6CBFD53F716DD13E60F1B /* PanelLibraryActionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelLibraryActionsTests.swift; sourceTree = "<group>"; };
@@ -2428,6 +2442,7 @@
 				245A0BA4D95BE277C1C19010 /* Extension */,
 				EFF7822E42F13D0C2BF065E3 /* include */,
 				47D7B1893A04BBEB5BED71E1 /* mediaremote-adapter */,
+				C597B711F7F0BCBAC864802A /* scripts */,
 				A579D355037274AFB7C87C90 /* Shared */,
 				B7A12382826DB02EC6CB2AA6 /* src */,
 				BF283B4F4373183833855AEC /* StarterWallpaper */,
@@ -2658,6 +2673,9 @@
 				0BD1FA0716201E21C2542A66 /* LockScreenWallpaperSelection.swift */,
 				01A5E3053335C56D641946A1 /* LockScreenWallpaperService.swift */,
 				39D077D448F9929DC7DB8717 /* MachOImageUUIDs.swift */,
+				6D07691909E5D8A102190923 /* SequoiaAerialBridgeLauncher.swift */,
+				5A1D05E7B6C6019063F66E94 /* SequoiaAerialLockPlayback.swift */,
+				ED014F90B0943C052EAE95B3 /* SequoiaAerialLockShortcut.swift */,
 			);
 			path = LockScreen;
 			sourceTree = "<group>";
@@ -3340,6 +3358,15 @@
 			path = Resources/StarterWallpaper;
 			sourceTree = "<group>";
 		};
+		C597B711F7F0BCBAC864802A /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				D7405F5A8297377EBF3ECEBC /* repeat_aerial_video.swift.txt */,
+				C569022F76333EDDA11E1B29 /* sequoia_aerial_bridge.py */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
 		CBE36361F4B28CDD00C070AB /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -3507,6 +3534,8 @@
 				F49D69EDB58DDC9EF4FC0F6D /* LockScreenXPCDriftTests.swift */,
 				6337E2F9FBA0B455BCDB2FD5 /* MachOFixture.swift */,
 				6669F66223EDF1EEC5086AAC /* MachOImageUUIDsTests.swift */,
+				DBFA2D32883EB488A62DAEB0 /* SequoiaAerialBridgeLauncherTests.swift */,
+				EAD3B0464D307D58A7EE4632 /* SequoiaAerialLockPlaybackTests.swift */,
 				4512CB6E7B775CE80314D131 /* WallpaperPresentationAuthorityTests.swift */,
 			);
 			path = LockScreen;
@@ -3827,6 +3856,8 @@
 				0B102301E4157C85811DEE63 /* Localizable.xcstrings in Resources */,
 				C5F61FDF83684A1A3F4B75A4 /* StarterWallpaper in Resources */,
 				E7CC4AECE4171218D2EDF15A /* mediaremote-adapter.pl in Resources */,
+				925647F67FD8136CF27020F0 /* repeat_aerial_video.swift.txt in Resources */,
+				9B06C5571842E99E33C77FCC /* sequoia_aerial_bridge.py in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4159,6 +4190,8 @@
 				9FB8E5BEB3B3043E1EC79498 /* SceneMediaSinkTests.swift in Sources */,
 				7B17882BC109B7C8CCECBBFD /* SceneReportsTests.swift in Sources */,
 				C861BB1B618FD8A85190C57C /* ScreenSaverWebSurfaceTests.swift in Sources */,
+				4B6EF5B0DFCCA055E87F7DAE /* SequoiaAerialBridgeLauncherTests.swift in Sources */,
+				2DB32AA7E2B2770A0B561534 /* SequoiaAerialLockPlaybackTests.swift in Sources */,
 				D7C8621FC7BFAA6CC50617BF /* SessionLedgerTests.swift in Sources */,
 				74F39F171BA3606BF4D5D0E2 /* SettingsBFixtures.swift in Sources */,
 				E170E144E974C8C616A59D10 /* SettingsBLocalizationTests.swift in Sources */,
@@ -4645,6 +4678,9 @@
 				CC51C9C301A586CC09CDB7F8 /* SceneWallpaperPreviewSurface.swift in Sources */,
 				D74248705F122392E7D7B1C3 /* ScreenLock.swift in Sources */,
 				1D9D350D4CFA1D3807C78966 /* ScreenSaverWebSurface.swift in Sources */,
+				92FDCE0965D241A68E3747F1 /* SequoiaAerialBridgeLauncher.swift in Sources */,
+				1BAD7EE4FADEF8B21F8B591F /* SequoiaAerialLockPlayback.swift in Sources */,
+				54542540DB241ACC04C5BC78 /* SequoiaAerialLockShortcut.swift in Sources */,
 				3029B64763534708F5678B2B /* SessionLedger.swift in Sources */,
 				87930F4075AD81F5BF4E3B3D /* SettingsDetail.swift in Sources */,
 				6BBCDD2F4CBC22FE50638A71 /* SettingsDisclosure.swift in Sources */,

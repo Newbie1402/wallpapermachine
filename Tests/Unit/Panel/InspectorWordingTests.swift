@@ -280,8 +280,9 @@ final class InspectorWordingTests: InspectorTestCase {
           mode: mode)
       )?.detail
     }
+    let factor = 1.34.formatted(.number.locale(PanelLocale.shared.locale))
     XCTAssertEqual(
-      detail(.factor(1.34), mode: .fill), "With Fill on this display, a scale factor of ×1.34 hides them.")
+      detail(.factor(1.34), mode: .fill), "With Fill on this display, a scale factor of ×\(factor) hides them.")
     XCTAssertEqual(detail(.alreadyHidden, mode: .fill), "Fill on this display already crops them out.")
     XCTAssertEqual(
       detail(.implausible, mode: .fill), "The bars look too large to be reliable, so nothing is suggested.")

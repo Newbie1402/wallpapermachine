@@ -47,6 +47,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSMenu
         WallpaperHosts(web: webWallpaperHost, native: nativeVideoHost)
     }
     private var presentationPolicy: WallpaperPresentationPolicy?
+    private let sequoiaAerialLockPlayback = SequoiaAerialLockPlayback()
     /// Keeps the previous picture on screen while a switched wallpaper loads.
     private var switchHold: WallpaperSwitchHold?
     private var windowAuditor: WallpaperWindowAuditor?
@@ -175,6 +176,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSMenu
         // Follows the Mac for Automatic sunrise and sunset. It asks for nothing here: access is
         // requested only from an explicit action in the panel.
         SolarLocationTracker.shared.start()
+        sequoiaAerialLockPlayback.start()
         AppLog.info("startup: solar location tracker started")
         // A crash during a download leaves its staging behind, holding the whole downloaded item:
         // SteamCMD's half in app support, what it fetched beside the library. A moved library
@@ -994,6 +996,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSMenu
         telemetry = nil
         activeCount?.stop()
         activeCount = nil
+        sequoiaAerialLockPlayback.stop()
         presentationPolicy?.stop()
         presentationPolicy = nil
         windowAuditor?.stop()
@@ -1183,6 +1186,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSMenu
                 telemetry = nil
                 activeCount?.stop()
                 activeCount = nil
+                sequoiaAerialLockPlayback.stop()
                 presentationPolicy?.stop()
                 presentationPolicy = nil
                 windowAuditor?.stop()
@@ -2627,7 +2631,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSMenu
     }
 
     @objc private func lockScreen() {
-        ScreenLock.lock()
+        sequoiaAerialLockPlayback.lock()
     }
 
     @objc private func exitApplication() {

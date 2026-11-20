@@ -1,0 +1,80 @@
+import AVFoundation
+import Foundation
+
+enum RepeatError: Error {
+  case usage
+  case missingVideoTrack
+  case exportSessionUnavailable
+  case exportFailed(String)
+  case durationMismatch(expected: Double, actual: Double)
+}
+
+func repeatVideo(sourceURL: URL, outputURL: URL, durationSeconds: Double) async throws {
+  let source = AVURLAsset(url: sourceURL)
+  guard let sourceTrack = try await source.loadTracks(withMediaType: .video).first else {
+    throw RepeatError.missingVideoTrack
+  }
+  let sourceDuration = try await source.load(.duration)
+  guard sourceDuration.seconds.isFinite, sourceDuration.seconds > 0 else {
+    throw RepeatError.missingVideoTrack
+  }
+
+  let composition = AVMutableComposition()
+  guard let destination = composition.addMutableTrack(
+    withMediaType: .video,
+    preferredTrackID: kCMPersistentTrackID_Invalid
+  ) else {
+    throw RepeatError.exportSessionUnavailable
+  }
+
+  let sourceRange = CMTimeRange(start: .zero, duration: sourceDuration)
+  let repeatCount = max(1, Int(ceil(durationSeconds / sourceDuration.seconds)))
+  var insertionTime = CMTime.zero
+  for _ in 0..<repeatCount {
+    try destination.insertTimeRange(sourceRange, of: sourceTrack, at: insertionTime)
+    insertionTime = insertionTime + sourceDuration
+  }
+
+  guard let exporter = AVAssetExportSession(
+    asset: composition,
+    presetName: AVAssetExportPresetPassthrough
+  ) else {
+    throw RepeatError.exportSessionUnavailable
+  }
+  try? FileManager.default.removeItem(at: outputURL)
+  exporter.outputURL = outputURL
+  exporter.outputFileType = .mov
+  exporter.shouldOptimizeForNetworkUse = false
+  try await exporter.export(to: outputURL, as: .mov)
+
+  let writtenAsset = AVURLAsset(url: outputURL)
+  let writtenDuration = try await writtenAsset.load(.duration).seconds
+  let expectedDuration = sourceDuration.seconds * Double(repeatCount)
+  guard abs(writtenDuration - expectedDuration) <= 0.05 else {
+    throw RepeatError.durationMismatch(expected: expectedDuration, actual: writtenDuration)
+  }
+}
+
+@main
+struct RepeatAerialVideo {
+  static func main() async {
+    guard CommandLine.arguments.count == 4,
+          let duration = Double(CommandLine.arguments[3]),
+          duration.isFinite,
+          duration > 0,
+          duration <= 3600 else {
+      fputs("Usage: repeat_aerial_video.swift <source.mov> <output.mov> <duration-seconds (1...3600)>\n", stderr)
+      exit(2)
+    }
+    do {
+      try await repeatVideo(
+        sourceURL: URL(fileURLWithPath: CommandLine.arguments[1]),
+        outputURL: URL(fileURLWithPath: CommandLine.arguments[2]),
+        durationSeconds: duration
+      )
+    } catch {
+      fputs("Could not create the repeated Aerial video: \(error)\n", stderr)
+      exit(1)
+    }
+  }
+}
